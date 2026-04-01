@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>🍜 金宝吃什么？</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: #f4f7f6; padding-top: 50px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: inline-block; min-width: 300px; }
+        button { background: #ff4757; color: white; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-size: 1.1em; transition: 0.3s; }
+        button:hover { background: #ff6b81; transform: scale(1.05); }
+        #result { font-size: 2em; color: #2f3542; margin: 20px 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🍴 Kampar Food Hunter</h1>
+        <p>今天不想动脑筋？点一下试试：</p>
+        <div id="result">？</div>
+        <button onclick="pickFood()">帮我决定！</button>
+        <p id="tip" style="color: #747d8c; margin-top: 15px;"></p>
+    </div>
+
+    <script>
+        const foods = [
+            { name: "老街瓦煲鸡饭", tip: "记得早点去，不然要等很久！" },
+            { name: "新街 Nasi Lemak", tip: "那里的叁巴酱是灵魂。" },
+            { name: "西湖边上的板面", tip: "风景好，味道正。" },
+            { name: "明记猪肠粉", tip: "金宝经典的早餐选择。" },
+            { name: "大树下酿豆腐", tip: "炸腐竹一定要多拿两块！" }
+        ];
+
+        function pickFood() {
+            const resultDiv = document.getElementById('result');
+            const tipDiv = document.getElementById('tip');
+            
+            // 添加一点“转圈圈”的视觉延迟
+            resultDiv.innerText = "正在挑选...";
+            
+            setTimeout(() => {
+                const random = foods[Math.floor(Math.random() * foods.length)];
+                resultDiv.innerText = random.name;
+                tipDiv.innerText = "💡 贴士: " + random.tip;
+            }, 500);
+        }
+    </script>
+</body>
+</html>
